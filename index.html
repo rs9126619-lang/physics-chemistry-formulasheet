@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 12 Formula Sheet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    .formula-font {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .formula-card {
+      transition: all 0.3s ease;
+    }
+    .formula-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14, 165, 233, 0.2);
+    }
+    .topic-btn {
+      transition: all 0.2s ease;
+    }
+    .topic-btn:hover {
+      transform: scale(1.02);
+    }
+    .topic-btn.active {
+      background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+    }
+    .section-tab {
+      transition: all 0.3s ease;
+    }
+    .section-tab.active {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+      color: white;
+    }
+    .fade-in {
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 50%, #f0f9ff 100%);
+    }
+    .header-gradient {
+      background: linear-gradient(135deg, #1e40af 0%, #0369a1 100%);
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e0f2fe;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0ea5e9;
+      border-radius: 4px;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full gradient-bg">
+  <div class="app-wrapper h-full overflow-auto w-full"><!-- Header -->
+   <header class="header-gradient text-white py-6 px-4 shadow-lg sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto">
+     <h1 id="main-title" class="text-2xl md:text-3xl font-bold text-center mb-4">📚 Class 12 Formula Sheet</h1><!-- Main Section Tabs -->
+     <div class="flex justify-center gap-3 flex-wrap"><button onclick="switchSection('physics')" id="physics-tab" class="section-tab active px-6 py-2 rounded-full font-semibold text-sm md:text-base bg-white/20 backdrop-blur"> ⚛️ Physics </button> <button onclick="switchSection('chemistry')" id="chemistry-tab" class="section-tab px-6 py-2 rounded-full font-semibold text-sm md:text-base bg-white/20 backdrop-blur"> 🧪 Chemistry </button>
+     </div>
+    </div>
+   </header>
+   <main class="max-w-6xl mx-auto p-4 md:p-6"><!-- Physics Section -->
+    <div id="physics-section" class="fade-in">
+     <h2 id="physics-title" class="text-xl md:text-2xl font-bold text-blue-900 mb-4 flex items-center gap-2">⚛️ Physics Formulas</h2><!-- Physics Topics -->
+     <div class="flex flex-wrap gap-2 mb-6" id="physics-topics"><button onclick="showPhysicsTopic('electrostatics')" class="topic-btn active px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Electrostatics</button> <button onclick="showPhysicsTopic('current')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Current Electricity</button> <button onclick="showPhysicsTopic('magnetic')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Magnetism</button> <button onclick="showPhysicsTopic('emi')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">EMI &amp; AC</button> <button onclick="showPhysicsTopic('optics')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Optics</button> <button onclick="showPhysicsTopic('modern')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Modern Physics</button> <button onclick="showPhysicsTopic('semiconductor')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Semiconductors</button>
+     </div><!-- Physics Formulas Container -->
+     <div id="physics-formulas" class="grid grid-cols-1 md:grid-cols-2 gap-4"><!-- Formulas will be loaded here -->
+     </div>
+    </div><!-- Chemistry Section -->
+    <div id="chemistry-section" class="hidden fade-in">
+     <h2 id="chemistry-title" class="text-xl md:text-2xl font-bold text-blue-900 mb-4 flex items-center gap-2">🧪 Chemistry Formulas</h2><!-- Chemistry Topics -->
+     <div class="flex flex-wrap gap-2 mb-6" id="chemistry-topics"><button onclick="showChemistryTopic('solutions')" class="topic-btn active px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Solutions</button> <button onclick="showChemistryTopic('electrochemistry')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Electrochemistry</button> <button onclick="showChemistryTopic('kinetics')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Chemical Kinetics</button> <button onclick="showChemistryTopic('surface')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Surface Chemistry</button> <button onclick="showChemistryTopic('organic')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Organic Chemistry</button> <button onclick="showChemistryTopic('coordination')" class="topic-btn px-4 py-2 rounded-full text-sm font-medium bg-sky-100 text-sky-800 border border-sky-200">Coordination Compounds</button>
+     </div><!-- Chemistry Formulas Container -->
+     <div id="chemistry-formulas" class="grid grid-cols-1 md:grid-cols-2 gap-4"><!-- Formulas will be loaded here -->
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer class="text-center py-4 text-blue-800 text-sm">
+    <p>📖 Best of luck for your exams! Keep practicing!</p>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      main_title: '📚 Class 12 Formula Sheet',
+      physics_title: '⚛️ Physics Formulas',
+      chemistry_title: '🧪 Chemistry Formulas',
+      background_color: '#dbeafe',
+      header_color: '#1e40af',
+      text_color: '#1e3a8a',
+      button_color: '#0ea5e9',
+      card_color: '#ffffff'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Physics Formulas Data
+    const physicsFormulas = {
+      electrostatics: [
+        { name: "Coulomb's Law", formula: "F = kq₁q₂/r²", desc: "k = 9×10⁹ Nm²/C²" },
+        { name: "Electric Field", formula: "E = F/q = kQ/r²", desc: "Unit: N/C or V/m" },
+        { name: "Electric Potential", formula: "V = kQ/r = W/q", desc: "Unit: Volt (V)" },
+        { name: "Capacitance", formula: "C = Q/V = ε₀A/d", desc: "Unit: Farad (F)" },
+        { name: "Energy in Capacitor", formula: "U = ½CV² = ½QV = Q²/2C", desc: "Unit: Joule (J)" },
+        { name: "Capacitors in Series", formula: "1/C = 1/C₁ + 1/C₂ + ...", desc: "Charge same, voltage divides" },
+        { name: "Capacitors in Parallel", formula: "C = C₁ + C₂ + ...", desc: "Voltage same, charge adds" },
+        { name: "Electric Flux", formula: "φ = E·A = EA cos θ", desc: "Unit: Nm²/C" },
+        { name: "Gauss's Law", formula: "φ = q/ε₀", desc: "ε₀ = 8.85×10⁻¹² C²/Nm²" },
+        { name: "Electric Dipole Moment", formula: "p = q × 2a", desc: "Direction: -ve to +ve" }
+      ],
+      current: [
+        { name: "Ohm's Law", formula: "V = IR", desc: "R = ρL/A" },
+        { name: "Resistance", formula: "R = ρL/A", desc: "ρ = resistivity" },
+        { name: "Resistivity", formula: "ρ = RA/L", desc: "Unit: Ωm" },
+        { name: "Current Density", formula: "J = I/A = σE", desc: "σ = conductivity" },
+        { name: "Drift Velocity", formula: "vd = I/neA = eEτ/m", desc: "τ = relaxation time" },
+        { name: "Series Resistance", formula: "R = R₁ + R₂ + R₃ + ...", desc: "Current same" },
+        { name: "Parallel Resistance", formula: "1/R = 1/R₁ + 1/R₂ + ...", desc: "Voltage same" },
+        { name: "Electric Power", formula: "P = VI = I²R = V²/R", desc: "Unit: Watt (W)" },
+        { name: "EMF of Cell", formula: "ε = V + Ir", desc: "r = internal resistance" },
+        { name: "Kirchhoff's Current Law", formula: "ΣI = 0", desc: "At any junction" },
+        { name: "Kirchhoff's Voltage Law", formula: "ΣV = 0", desc: "In any closed loop" },
+        { name: "Wheatstone Bridge", formula: "P/Q = R/S", desc: "Balanced condition" }
+      ],
+      magnetic: [
+        { name: "Magnetic Force on Charge", formula: "F = qvB sin θ", desc: "F = q(v × B)" },
+        { name: "Magnetic Force on Wire", formula: "F = BIL sin θ", desc: "F = IL × B" },
+        { name: "Biot-Savart Law", formula: "dB = (μ₀/4π)(Idl sin θ/r²)", desc: "μ₀ = 4π×10⁻⁷ Tm/A" },
+        { name: "Field of Straight Wire", formula: "B = μ₀I/2πr", desc: "Infinite straight wire" },
+        { name: "Field at Center of Coil", formula: "B = μ₀NI/2R", desc: "N = number of turns" },
+        { name: "Field of Solenoid", formula: "B = μ₀nI", desc: "n = turns per unit length" },
+        { name: "Magnetic Moment", formula: "M = NIA", desc: "Unit: Am²" },
+        { name: "Torque on Dipole", formula: "τ = MB sin θ = M × B", desc: "In magnetic field" },
+        { name: "Cyclotron Frequency", formula: "f = qB/2πm", desc: "Independent of velocity" },
+        { name: "Lorentz Force", formula: "F = q(E + v × B)", desc: "Combined E and B fields" }
+      ],
+      emi: [
+        { name: "Magnetic Flux", formula: "φ = BA cos θ", desc: "Unit: Weber (Wb)" },
+        { name: "Faraday's Law", formula: "ε = -dφ/dt", desc: "Induced EMF" },
+        { name: "Motional EMF", formula: "ε = BLv", desc: "Conductor moving in B field" },
+        { name: "Self Inductance", formula: "ε = -L(dI/dt)", desc: "L = μ₀n²Al" },
+        { name: "Mutual Inductance", formula: "ε₂ = -M(dI₁/dt)", desc: "M = μ₀n₁n₂Al" },
+        { name: "Energy in Inductor", formula: "U = ½LI²", desc: "Magnetic energy" },
+        { name: "AC Voltage", formula: "V = V₀ sin ωt", desc: "ω = 2πf" },
+        { name: "RMS Values", formula: "Vrms = V₀/√2, Irms = I₀/√2", desc: "Effective values" },
+        { name: "Impedance (LCR)", formula: "Z = √(R² + (XL - XC)²)", desc: "XL = ωL, XC = 1/ωC" },
+        { name: "Resonance Frequency", formula: "f₀ = 1/(2π√LC)", desc: "XL = XC" },
+        { name: "Power Factor", formula: "cos φ = R/Z", desc: "P = VIcos φ" },
+        { name: "Transformer", formula: "Vs/Vp = Ns/Np = Ip/Is", desc: "Ideal transformer" }
+      ],
+      optics: [
+        { name: "Mirror Formula", formula: "1/v + 1/u = 1/f", desc: "f = R/2" },
+        { name: "Magnification (Mirror)", formula: "m = -v/u = h'/h", desc: "Linear magnification" },
+        { name: "Lens Formula", formula: "1/v - 1/u = 1/f", desc: "Sign convention applies" },
+        { name: "Lens Maker's Formula", formula: "1/f = (μ-1)(1/R₁ - 1/R₂)", desc: "μ = refractive index" },
+        { name: "Power of Lens", formula: "P = 1/f (in meters)", desc: "Unit: Diopter (D)" },
+        { name: "Snell's Law", formula: "n₁ sin θ₁ = n₂ sin θ₂", desc: "Law of refraction" },
+        { name: "Critical Angle", formula: "sin θc = n₂/n₁", desc: "For total internal reflection" },
+        { name: "Young's Double Slit", formula: "β = λD/d", desc: "Fringe width" },
+        { name: "Path Difference (Bright)", formula: "Δx = nλ", desc: "n = 0, 1, 2, ..." },
+        { name: "Path Difference (Dark)", formula: "Δx = (2n+1)λ/2", desc: "n = 0, 1, 2, ..." },
+        { name: "Single Slit Diffraction", formula: "a sin θ = nλ", desc: "Minima condition" },
+        { name: "Resolving Power", formula: "R = 1/dθ = a/1.22λ", desc: "Rayleigh criterion" }
+      ],
+      modern: [
+        { name: "Photon Energy", formula: "E = hν = hc/λ", desc: "h = 6.63×10⁻³⁴ Js" },
+        { name: "Photoelectric Effect", formula: "hν = φ + ½mv²max", desc: "φ = work function" },
+        { name: "Stopping Potential", formula: "eV₀ = ½mv²max", desc: "KEmax = eV₀" },
+        { name: "de Broglie Wavelength", formula: "λ = h/p = h/mv", desc: "Matter waves" },
+        { name: "Bohr's Radius", formula: "rn = n²h²ε₀/πme²", desc: "r₁ = 0.529 Å" },
+        { name: "Bohr's Energy", formula: "En = -13.6/n² eV", desc: "Ground state: n=1" },
+        { name: "Hydrogen Spectrum", formula: "1/λ = R(1/n₁² - 1/n₂²)", desc: "R = 1.097×10⁷ m⁻¹" },
+        { name: "Mass-Energy", formula: "E = mc²", desc: "Einstein's equation" },
+        { name: "Radioactive Decay", formula: "N = N₀e^(-λt)", desc: "λ = decay constant" },
+        { name: "Half Life", formula: "T½ = 0.693/λ", desc: "Time for half decay" },
+        { name: "Activity", formula: "A = λN = A₀e^(-λt)", desc: "Unit: Becquerel (Bq)" },
+        { name: "Binding Energy", formula: "BE = Δmc²", desc: "Δm = mass defect" }
+      ],
+      semiconductor: [
+        { name: "Intrinsic Carrier", formula: "ne = nh = ni", desc: "In pure semiconductor" },
+        { name: "Conductivity", formula: "σ = e(neμe + nhμh)", desc: "μ = mobility" },
+        { name: "Mass Action Law", formula: "nenh = ni²", desc: "At equilibrium" },
+        { name: "Diode Current", formula: "I = I₀(e^(eV/kT) - 1)", desc: "I₀ = reverse saturation" },
+        { name: "Transistor Current", formula: "IE = IB + IC", desc: "Emitter = Base + Collector" },
+        { name: "Current Gain (α)", formula: "α = IC/IE", desc: "Common base" },
+        { name: "Current Gain (β)", formula: "β = IC/IB = α/(1-α)", desc: "Common emitter" },
+        { name: "Voltage Gain", formula: "Av = βRL/Rin", desc: "Amplifier gain" }
+      ]
+    };
+
+    // Chemistry Formulas Data
+    const chemistryFormulas = {
+      solutions: [
+        { name: "Molarity", formula: "M = moles of solute/L of solution", desc: "Unit: mol/L or M" },
+        { name: "Molality", formula: "m = moles of solute/kg of solvent", desc: "Unit: mol/kg" },
+        { name: "Mole Fraction", formula: "χA = nA/(nA + nB)", desc: "Dimensionless" },
+        { name: "Mass Percentage", formula: "% w/w = (mass solute/mass solution)×100", desc: "By mass" },
+        { name: "Henry's Law", formula: "p = KH × χ", desc: "KH = Henry's constant" },
+        { name: "Raoult's Law", formula: "pA = p°A × χA", desc: "Ideal solution" },
+        { name: "Relative Lowering", formula: "ΔP/P° = χsolute = n₂/(n₁+n₂)", desc: "Vapor pressure" },
+        { name: "Elevation in BP", formula: "ΔTb = Kb × m × i", desc: "Kb = molal elevation const" },
+        { name: "Depression in FP", formula: "ΔTf = Kf × m × i", desc: "Kf = molal depression const" },
+        { name: "Osmotic Pressure", formula: "π = iCRT", desc: "i = van't Hoff factor" },
+        { name: "van't Hoff Factor", formula: "i = 1 + (n-1)α", desc: "α = degree of dissociation" },
+        { name: "Molar Mass", formula: "M = WRT/πV = Kb×W×1000/ΔTb×w", desc: "From colligative properties" }
+      ],
+      electrochemistry: [
+        { name: "Faraday's First Law", formula: "m = ZIt = ZQ", desc: "Z = electrochemical equivalent" },
+        { name: "Faraday's Second Law", formula: "m₁/m₂ = E₁/E₂", desc: "E = equivalent weight" },
+        { name: "Nernst Equation", formula: "E = E° - (RT/nF)ln Q", desc: "At 25°C: E = E° - 0.059/n log Q" },
+        { name: "Cell EMF", formula: "E°cell = E°cathode - E°anode", desc: "Standard conditions" },
+        { name: "Gibbs Free Energy", formula: "ΔG = -nFE", desc: "ΔG° = -nFE°" },
+        { name: "Equilibrium Constant", formula: "log K = nE°/0.059", desc: "At 25°C" },
+        { name: "Conductance", formula: "G = 1/R = A/ρl", desc: "Unit: Siemens (S)" },
+        { name: "Conductivity", formula: "κ = 1/ρ = Gl/A", desc: "Unit: S/m" },
+        { name: "Molar Conductivity", formula: "Λm = κ × 1000/M", desc: "Unit: S cm² mol⁻¹" },
+        { name: "Kohlrausch's Law", formula: "Λ°m = λ°+ + λ°-", desc: "At infinite dilution" },
+        { name: "Degree of Dissociation", formula: "α = Λm/Λ°m", desc: "For weak electrolytes" }
+      ],
+      kinetics: [
+        { name: "Rate of Reaction", formula: "r = -d[R]/dt = d[P]/dt", desc: "Change in concentration" },
+        { name: "Rate Law", formula: "r = k[A]^m[B]^n", desc: "k = rate constant" },
+        { name: "Zero Order", formula: "[A] = [A]₀ - kt", desc: "t½ = [A]₀/2k" },
+        { name: "First Order", formula: "ln[A] = ln[A]₀ - kt", desc: "t½ = 0.693/k" },
+        { name: "First Order (Conc)", formula: "k = (2.303/t)log([A]₀/[A])", desc: "Unit: s⁻¹" },
+        { name: "Second Order", formula: "1/[A] = 1/[A]₀ + kt", desc: "t½ = 1/k[A]₀" },
+        { name: "Arrhenius Equation", formula: "k = Ae^(-Ea/RT)", desc: "A = pre-exponential factor" },
+        { name: "Arrhenius (Log Form)", formula: "log k = log A - Ea/2.303RT", desc: "Ea = activation energy" },
+        { name: "Temperature Effect", formula: "log(k₂/k₁) = Ea(T₂-T₁)/2.303RT₁T₂", desc: "Comparing two temperatures" },
+        { name: "Order of Reaction", formula: "n = (log r₁ - log r₂)/(log[A]₁ - log[A]₂)", desc: "From experimental data" }
+      ],
+      surface: [
+        { name: "Freundlich Isotherm", formula: "x/m = kP^(1/n)", desc: "log(x/m) = log k + (1/n)log P" },
+        { name: "Langmuir Isotherm", formula: "x/m = abP/(1 + bP)", desc: "Monolayer adsorption" },
+        { name: "Adsorption from Solution", formula: "x/m = kC^(1/n)", desc: "C = concentration" },
+        { name: "BET Equation", formula: "P/V(P₀-P) = 1/VmC + (C-1)P/VmCP₀", desc: "Multilayer adsorption" },
+        { name: "Surface Tension", formula: "γ = F/l = Energy/Area", desc: "Unit: N/m or J/m²" },
+        { name: "Capillary Rise", formula: "h = 2γcosθ/rρg", desc: "θ = contact angle" }
+      ],
+      organic: [
+        { name: "Degree of Unsaturation", formula: "DBE = (2C + 2 + N - H - X)/2", desc: "Double bond equivalent" },
+        { name: "Alcohol Oxidation", formula: "R-CH₂OH → R-CHO → R-COOH", desc: "Primary alcohol" },
+        { name: "Grignard Reagent", formula: "R-X + Mg → R-Mg-X", desc: "In dry ether" },
+        { name: "Aldol Condensation", formula: "2R-CH₂-CHO → R-CH₂-CH(OH)-CH(R)-CHO", desc: "Base catalyzed" },
+        { name: "Cannizzaro Reaction", formula: "2HCHO + OH⁻ → HCOO⁻ + CH₃OH", desc: "No α-hydrogen aldehydes" },
+        { name: "Esterification", formula: "R-COOH + R'-OH ⇌ R-COOR' + H₂O", desc: "Acid catalyzed" },
+        { name: "Saponification", formula: "R-COOR' + NaOH → R-COONa + R'-OH", desc: "Base hydrolysis" },
+        { name: "Williamson Synthesis", formula: "R-ONa + R'-X → R-O-R' + NaX", desc: "Ether synthesis" },
+        { name: "SN1 Rate", formula: "Rate = k[R-X]", desc: "First order, carbocation" },
+        { name: "SN2 Rate", formula: "Rate = k[R-X][Nu⁻]", desc: "Second order, backside attack" }
+      ],
+      coordination: [
+        { name: "EAN Rule", formula: "EAN = Z - ON + 2(CN)", desc: "Effective atomic number" },
+        { name: "CFSE (Octahedral)", formula: "CFSE = -0.4n(t₂g) + 0.6n(eg)", desc: "In units of Δo" },
+        { name: "CFSE (Tetrahedral)", formula: "CFSE = -0.6n(e) + 0.4n(t₂)", desc: "Δt ≈ 4/9 Δo" },
+        { name: "Magnetic Moment", formula: "μ = √(n(n+2)) BM", desc: "n = unpaired electrons" },
+        { name: "Spectrochemical Series", formula: "I⁻<Br⁻<Cl⁻<F⁻<OH⁻<H₂O<NH₃<en<NO₂⁻<CN⁻<CO", desc: "Increasing Δ" },
+        { name: "Stability Constant", formula: "Kf = [MLn]/[M][L]ⁿ", desc: "Formation constant" },
+        { name: "Chelate Effect", formula: "ΔG = ΔH - TΔS", desc: "Entropy driven stability" },
+        { name: "Crystal Field Splitting", formula: "Δo = hc/λ", desc: "Energy of absorbed light" }
+      ]
+    };
+
+    let currentSection = 'physics';
+    let currentPhysicsTopic = 'electrostatics';
+    let currentChemistryTopic = 'solutions';
+
+    // Create formula card HTML
+    function createFormulaCard(item) {
+      return `
+        <div class="formula-card bg-white rounded-xl p-4 shadow-md border border-sky-100">
+          <h4 class="text-blue-900 font-semibold text-sm mb-2">${item.name}</h4>
+          <div class="formula-font bg-gradient-to-r from-sky-50 to-blue-50 rounded-lg p-3 text-center mb-2">
+            <span class="text-blue-800 text-lg font-medium">${item.formula}</span>
+          </div>
+          <p class="text-sky-700 text-xs">${item.desc}</p>
+        </div>
+      `;
+    }
+
+    // Render formulas
+    function renderFormulas(container, formulas) {
+      container.innerHTML = formulas.map(createFormulaCard).join('');
+    }
+
+    // Switch main section
+    function switchSection(section) {
+      currentSection = section;
+      
+      document.getElementById('physics-tab').classList.toggle('active', section === 'physics');
+      document.getElementById('chemistry-tab').classList.toggle('active', section === 'chemistry');
+      
+      document.getElementById('physics-section').classList.toggle('hidden', section !== 'physics');
+      document.getElementById('chemistry-section').classList.toggle('hidden', section !== 'chemistry');
+      
+      if (section === 'physics') {
+        showPhysicsTopic(currentPhysicsTopic);
+      } else {
+        showChemistryTopic(currentChemistryTopic);
+      }
+    }
+
+    // Show physics topic
+    function showPhysicsTopic(topic) {
+      currentPhysicsTopic = topic;
+      
+      document.querySelectorAll('#physics-topics .topic-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(topic.substring(0, 4))) {
+          btn.classList.add('active');
+        }
+      });
+      
+      const container = document.getElementById('physics-formulas');
+      renderFormulas(container, physicsFormulas[topic] || []);
+    }
+
+    // Show chemistry topic
+    function showChemistryTopic(topic) {
+      currentChemistryTopic = topic;
+      
+      document.querySelectorAll('#chemistry-topics .topic-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(topic.substring(0, 4))) {
+          btn.classList.add('active');
+        }
+      });
+      
+      const container = document.getElementById('chemistry-formulas');
+      renderFormulas(container, chemistryFormulas[topic] || []);
+    }
+
+    // Element SDK Integration
+    async function onConfigChange(newConfig) {
+      config = { ...defaultConfig, ...newConfig };
+      
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('physics-title').textContent = config.physics_title || defaultConfig.physics_title;
+      document.getElementById('chemistry-title').textContent = config.chemistry_title || defaultConfig.chemistry_title;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => {
+              config.card_color = value;
+              window.elementSdk.setConfig({ card_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.button_color || defaultConfig.button_color,
+            set: (value) => {
+              config.button_color = value;
+              window.elementSdk.setConfig({ button_color: value });
+            }
+          },
+          {
+            get: () => config.header_color || defaultConfig.header_color,
+            set: (value) => {
+              config.header_color = value;
+              window.elementSdk.setConfig({ header_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['physics_title', config.physics_title || defaultConfig.physics_title],
+        ['chemistry_title', config.chemistry_title || defaultConfig.chemistry_title]
+      ]);
+    }
+
+    // Initialize
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Initial render
+    showPhysicsTopic('electrostatics');
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c06e38e404659b4',t:'MTc2ODgzMTU0Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
